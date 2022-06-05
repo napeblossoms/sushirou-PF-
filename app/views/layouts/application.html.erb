@@ -9,6 +9,20 @@
   </head>
 
   <body>
+    <header>
+      <% if end_user_signed_in? %>
+        <li>
+          <%= link_to "Log out", destroy_end_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "新規登録", new_end_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Log in", new_end_user_session_path %>
+        </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
