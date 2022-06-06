@@ -1,19 +1,26 @@
 <h1>新規投稿</h1>
-<%= form_with model: @postsushi do |f| %>
+<%= form_with model: @post_sushi,url:  end_user_post_sushis_path do |f| %>
 
-  <h4>画像</h4>
+  <%= f.label :image, "画像" %><br>
   <%= f.file_field :image, accept: "image/*" %><br>
 
-  <%= f.select :region, options_for_select(PostSushi.regions), {prompt: "選択してください"}, class: "prefecture-select" %>地方
+
+  <%= f.label :name, "店名" %><br>
+  <%= f.text_field :name,placeholder: "すしろう" %><br>
+
+  <%= f.label :region, "地方" %><br>
+  <%= f.select :region, options_for_select(PostSushi.regions), {prompt: "選択してください"}, class: "prefecture-select" %><br>
+
+  <%= f.label :prefecture, "都道府県" %><br>
+  <%= f.select :prefecture, options_for_select(PostSushi.prefectures), {prompt: "選択してください"}, class: "prefecture-select" %><br>
+
+  <%= f.label :municipalities, "市区町村" %><br>
+  <%= f.text_field :municipalities, placeholder: "渋谷区"%><br>
+
+  <%= f.label :price, "一人当たりの値段" %><br>
+  <%= f.select :price, options_for_select(PostSushi.prices), {prompt: "選択してください"}, class: "prefecture-select" %><br>
 
 
-  <h4>店名</h4>
-  <%= f.text_field :name %>
-
-
-
-  <h4>県</h4>
- <%= f.select :prefecture, options_for_select(PostSushi.prefectures), {prompt: "選択してください"}, class: "prefecture-select" %><br>
- <%= f.submit '投稿' %>
+  <%= f.submit '投稿' %>
 
 <% end %>

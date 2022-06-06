@@ -1,14 +1,15 @@
 class CreatePostSushis < ActiveRecord::Migration[5.0]
   def change
     create_table :post_sushis do |t|
-      t.string :name
-      t.integer :region
-      t.integer :prefecture
-      t.integer :municipalities
-      t.integer :price
-      t.integer :atmosphere
-      t.integer :lunch_dinner
-      t.text :memo
+      t.integer "end_user_id", null: false
+      t.string "name", null: false
+      t.integer "region", default: 0, null: false
+      t.integer "prefecture", default: 0, null: false
+      t.integer "municipalities", null: false
+      t.integer "price", default: 0, null: false
+      t.integer "atmosphere", default: 0, null: false
+      t.integer "lunch_dinner", default: 0, null: false
+      t.text "memo", null: false
 
       t.timestamps
     end
